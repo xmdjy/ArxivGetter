@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+arxivgetter/
+
+# Log files
+*.log
+
+# Local config and secrets
+config.local.yaml
+.env
+test.py
+
+# Editor-specific files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
