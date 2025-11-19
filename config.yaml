@@ -9,5 +9,5 @@ llm:
   api_keys: '80000cbc82d1476e9cbf31cd95a6aaee.vy5QOjzvOXRCapQI'
 
 papaers:
-  max_results: 5
+  max_results: 50
   query_content: "cs.AI OR cs.CV OR cs.LG OR cs.RO OR cs.HC OR cs.NE"

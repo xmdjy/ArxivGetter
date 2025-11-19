@@ -89,3 +89,7 @@ sudo systemctl status arxivgetter.service
 ```bash
 sudo systemctl enable arxivgetter.service
 ```
+重启服务
+```bash
+sudo systemctl restart arxivgetter.service
+```
