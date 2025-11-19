@@ -9,7 +9,7 @@ arxivgetter/
 *.log
 
 # Local config and secrets
-config.local.yaml
+config.yaml
 .env
 test.py
 
