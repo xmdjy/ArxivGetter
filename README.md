@@ -1,8 +1,10 @@
 # arxivgetter
 用于每天获取arxiv上最新的论文并自动推送至您的邮箱中,有关于文章类型数量等均可自定义,同时支持个性化总结
+
 前提准备:建议在Linux系统下的服务器中部署该项目,故后面的教程均以Linux系统为例
 效果如下展示
-![alt text](page.png)
+
+![alt text](page_upda.png)
 ## 克隆项目
 ```bash
 git clone https://github.com/xmdjy/arxivgetter.git
@@ -38,7 +40,10 @@ papaers:
   max_results: 
   query_content: ""
 ```
-自动邮件推送部分请参考有关smpt服务的相关内容自己配置,有关于论文筛选的参数`max_results`表示每日抓取文章上限,`query_content`表示文章类型,如与人工智能相关的类型名为cs.AI,其他类名请参考[arxiv分类列表](https://arxiv.org/category_taxonomy)
+自动邮件推送部分请参考有关smpt服务的相关内容自己配置,有关于论文筛选的参数`max_results`表示每日抓取文章上限,`query_content`表示文章类型,如与人工智能相关的类型名为cs.AI
+
+其他类名请参考[arxiv分类列表](https://arxiv.org/category_taxonomy)
+
 更改prompt以实现自定义请修改utils/ai_summarize中的message中的content
 ## 运行
 配置完成后即可运行脚本
@@ -48,9 +53,10 @@ python main.py
 ## 设置定时任务
 这里建议使用linux中的systemd服务实现
 首先需要确定以下三个参数:
-- user:whoami获取
-- workingdirectory:pwd获取
-- execstart:python的绝对路径,可通过which python获取
+- user:`whoami`获取
+- workingdirectory:`pwd`获取
+- execstart:python的绝对路径,可通过`which python`获取
+
 下面给服务器开24h的运行
 ```bash
 sudo nano /etc/systemd/system/arxivgetter.service
