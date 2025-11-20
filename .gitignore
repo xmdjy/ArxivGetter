@@ -10,6 +10,8 @@ arxivgetter/
 
 # Local config and secrets
 config.yaml
+debug_test.py
+1.py
 .env
 test.py
 

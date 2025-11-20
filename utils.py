@@ -15,7 +15,19 @@ import markdown
 
 def send_email(to_addr,content,port,server,sender,password):
     day=date.today()
-    html_content = markdown.markdown(content, extensions=['extra', 'codehilite'])
+    # 添加 CSS 样式以美化邮件显示
+    css_style = """
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; }
+        h3 { color: #2c3e50; border-bottom: 1px solid #eaeaea; padding-bottom: 5px; margin-top: 20px; }
+        strong { color: #d35400; }
+        ul { padding-left: 20px; margin: 10px 0; }
+        li { margin-bottom: 5px; }
+        blockquote { border-left: 4px solid #dfe2e5; padding-left: 10px; color: #666; margin: 10px 0; background-color: #f9f9f9; padding: 10px; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 20px 0; }
+    </style>
+    """
+    html_content = css_style + markdown.markdown(content, extensions=['extra', 'codehilite'])
     subject=f"update arxiv papers falls on {day}"
     port=port
     server=server
@@ -67,11 +79,11 @@ def ai_summarize(paper):
 
     response = client.chat.completions.create(
         model="glm-4.5",
-        message={"role": "user", "content": prompt},
+        messages=[{"role": "user", "content": prompt}],
         thinking={
             "type": "enabled",    # 启用深度思考模式
         },
-        max_tokens=1024,          # 最大输出 tokens
+        max_tokens=4096,          # 最大输出 tokens
         temperature=0.6,
         top_p=0.9         
     )

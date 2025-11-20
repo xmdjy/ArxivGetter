@@ -8,10 +8,10 @@ password=config['email']['password']
 to_addr=config['email']['to_addr']
 query_content=config['papaers']['query_content']
 max_results=config['papaers']['max_results']
-paper_list=tar=get_papers(query_content,max_results)
-
+paper_list=get_papers(query_content,max_results)
 
 def job():
+    print("strat job")
     all_contents=[]
     for p in paper_list:
         res=ai_summarize(p)
@@ -24,7 +24,7 @@ def job():
     send_email(to_addr,final_content,port,server,sender,password)
 
 if __name__ == "__main__":
-    schedule.every().day.at("14:15").do(job)
+    schedule.every().day.at("08:00").do(job)
     while True:
         schedule.run_pending()
         time.sleep(1)
